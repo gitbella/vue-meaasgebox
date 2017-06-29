@@ -17,7 +17,7 @@ buttonConfirm.addEventListener('click', () => {
  Vue.messagebox.confirm({
   title:'温馨提示',
   showTitle:false,
-  message:'hello</br>换行',
+  message:'hello',
   btnOk:function(){
     alert('it is my btnOk');
   },

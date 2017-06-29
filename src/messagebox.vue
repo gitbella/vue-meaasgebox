@@ -32,11 +32,10 @@
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   width: 80%;
-  border-radius: 4px;
+  border-radius: 6px;
   background: #fff;
   box-sizing: border-box;
   text-align: center;
-  transition: opacity .3s;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -53,23 +52,26 @@
 }
 .title{
    margin:16px;
-   color:#616161;
+   color:#757575;
+
 }
 .message{
-margin:44px 0px 39px;
+margin:14px 0px 20px;
 
 }
 .sure{
-  color:#4990E2;
+  color:#009ae8;
+   padding:17px 0px;
   // border-top:1px solid #eee;
   // padding:17px 0px;
 }
 .cancel{
- 
+ border-right:1px solid #eee;
+  padding:17px 0px;
 }
 .btn-group{
    border-top:1px solid #eee;
-  padding:17px 0px;
+ 
 }
 </style>
 <script>
@@ -120,49 +122,7 @@ export default {
 
       },
     props: {
-      title:String,
-      type:{
-        default:"温馨提示",
-        type:String},
-      message:String,
-      type:{
-        default:"温馨提示内容",
-        type:String
-      },
-      showTitle:Boolean,
-      type:{
-        default:true,
-        type:Boolean
-      },
-       showConfirmButton:Boolean,
-      type:{
-        default:true,
-        type:Boolean
-      },
-      showCancelButton:Boolean,
-      type:{
-        default:false,
-        type:Boolean
-      },
-      confirmButtonText:String,
-     type: {
-        default:"确认",
-        type:String
-      },      
-      cancelButtonText:String,
-     type: {
-        default:"取消",
-        type:String
-      },
-      confirmEvent:Function,
-      type:{
-        type: Function,
-        default: function () {
-         alert('hi');
-        }
-      },
-       
-      className: [String, Array],
+  
     },
 
     computed: {
