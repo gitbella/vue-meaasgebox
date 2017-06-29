@@ -6,8 +6,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'mz-vue-toast.js',
-    library: ['mz-vue-toast'],
+    filename: 'mz-vue-messagebox.js',
+    library: ['mz-vue-messagebox'],
     libraryTarget: 'umd'
   },
   module: {

@@ -1,44 +1,45 @@
 # Overview
-vue-toast is a mobile toast plugin for vue.js.
+vue-messagebox is a mobile messagebox plugin for vue.js.
 
 # Installation
-First, install `mz-vue-toast` from npm:
+First, install `mz-vue-messagebox` from npm:
 ```bash
-$ npm install mz-vue-toast
+$ npm install mz-vue-messagebox
 ```
 
 # Usage
 ```Javascript
 // before start
 import Vue from 'vue';
-import Toast from 'mz-vue-toast';
-Vue.use(Toast);
+import messagebox from 'mz-vue-messagebox';
+Vue.use(messagebox);
 
 ```
-Basically you can pass a string to `Toast`:
+Basically you can pass a string to `messagebox`:
 ```Javascript
-Vue.toast.info('test');
-Vue.toast.success('success');
-Vue.toast.error('error');
-```
-Or invoke `Toast` with an object as its configuration:
-```Javascript
-Vue.toast.info({
-  message: 'test',
-  type: 'info',
-  duration: 3000,
-  className: 'my-class'
-});
+ Vue.messagebox.alert({
+  title:'温馨提示',
+  message:'hello',
+ });
+ Vue.messagebox.confirm({
+  title:'温馨提示',
+  showTitle:false,
+  message:'hello</br>换行',
+  btnOk:function(){
+    alert('it is my btnOk');
+  },
 
+ });
 ```
+
 
 # API
-| Option    | Description                                    | Value                   | Default  |
-|-----------|------------------------------------------------|-------------------------|----------|
-| message   | content of the toast                           |                         |          |
-| type      | type of the toast                              | 'info' 'success' 'error'| 'info'   | 
-| duration  | time before the toast vanishes, in millisecond |                         | 3000     |
-| className | custom class name of the toast                 |                         |          |
+| Option    | Description                                         | Value                   | Default  |
+|-----------|-----------------------------------------------------|-------------------------|----------|
+| title     | title of the messagebox                             |                         |          |
+| message   | content of the messagebox                           |html or string
+|           | time before the messagebox vanishes, in millisecond |                         | 3000     |
+| className | custom class name of the messagebox                 |                         |          |
 
 # License
 MIT
