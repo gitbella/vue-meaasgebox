@@ -16,19 +16,6 @@ const plugin = {
         el: document.createElement('div')
       });
     };
-
-    // let removeDom = el => {
-    //   if (el.parentNode) {
-    //     el.parentNode.removeChild(el);
-    //   }
-    // }
-
-    // messageboxConstructor.prototype.remove = function() {
-    //   this.shown = false;
-    //   instance = null;
-    //   removeDom(this.$el);
-    // }
-
     let setOptions = (options) => {
       if (typeof options === 'string') {
         options = {
@@ -75,15 +62,9 @@ const plugin = {
       return show(options);
     }
 
-    const success = function(options) {
-      options = setOptions(options);
-      options = Object.assign({ type: 'success' }, options);
-      return show(options);
-    }
     const Messagebox = {
       alert: alert,
       confirm: confirm,
-      success: success
     };
 
     Vue.messagebox = Vue.prototype.$messagebox = Messagebox;
