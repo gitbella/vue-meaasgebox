@@ -1,30 +1,30 @@
 # Overview
-vue-toast is a mobile toast plugin for vue.js.
+vue-actionSheet is a mobile actionSheet plugin for vue.js.
 
 # Installation
-First, install `mz-vue-toast` from npm or bower:
+First, install `mz-vue-actionSheet` from npm or bower:
 ```bash
-$ npm install mz-vue-toast
-$ bower install mz-vue-toast
+$ npm install mz-vue-actionSheet
+$ bower install mz-vue-actionSheet
 ```
 
 # Usage
 ```Javascript
 // before start
 import Vue from 'vue';
-import Toast from 'mz-vue-toast';
-Vue.use(Toast);
+import actionSheet from 'mz-vue-actionSheet';
+Vue.use(actionSheet);
 
 ```
-Basically you can pass a string to `Toast`:
+Basically you can pass a string to `actionSheet`:
 ```Javascript
-Vue.toast.info('test');
-Vue.toast.success('success');
-Vue.toast.error('error');
+Vue.actionSheet.info('test');
+Vue.actionSheet.success('success');
+Vue.actionSheet.error('error');
 ```
-Or invoke `Toast` with an object as its configuration:
+Or invoke `actionSheet` with an object as its configuration:
 ```Javascript
-Vue.toast.info({
+Vue.actionSheet.info({
   message: 'test',
   duration: 3000,
   className: 'my-class'
@@ -35,11 +35,11 @@ Vue.toast.info({
 # API
 | Option    | Description                                    | Value                   | Default  |
 |-----------|------------------------------------------------|-------------------------|----------|
-| message   | content of the toast                           |                         |          |
-| duration  | time before the toast vanishes, in millisecond |                         | 3000     |
-| className | custom class name of the toast                 |                         |          |
-| position  | position of the toast                          |    'top' 'middle'       |          |
-| callback  |  callback after toast hide                     |                         |          |
+| message   | content of the actionSheet                           |                         |          |
+| duration  | time before the actionSheet vanishes, in millisecond |                         | 3000     |
+| className | custom class name of the actionSheet                 |                         |          |
+| position  | position of the actionSheet                          |    'top' 'middle'       |          |
+| callback  |  callback after actionSheet hide                     |                         |          |
 
 
 # License

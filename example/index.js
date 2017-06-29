@@ -4,21 +4,30 @@ import Toast from "../src/index.js";
 (function() {
   Vue.use(Toast);
 
-  let btnInfo = document.getElementById('toast_info');
+  let btnInfo = document.getElementById('actionSheet');
   btnInfo.addEventListener('click', () => {
     console.log("click info");
-    Vue.toast.info('info');
-  });
-
-  let btnSuccess = document.getElementById('toast_success');
-  btnSuccess.addEventListener('click', () => {
-    console.log("click success");
-    Vue.toast.success({
-      duration: 3000,
-      message: 'success',
-      callback: function() {
-        // your code 
+    Vue.actionSheet.show({
+    title:'信息还未提交,真的要离开',
+    cancelText:'再想想',
+    actions:[
+    {
+      text:'操作1',
+      action:function(){
+        alert('操作1');
+      },
+    },
+    {
+      text:'操作2',
+      action:function(){
+        alert('操作2');
       }
+    }
+    ]
+
+
+
     });
   });
+
 })();

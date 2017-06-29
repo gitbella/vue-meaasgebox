@@ -1,26 +1,26 @@
 'use strict';
 
-import ToastComponent from './toast.vue';
+import actionSheetComponent from './actionSheet.vue';
 
 const plugin = {
   install(Vue) {
-    const ToastConstructor = Vue.extend(ToastComponent);
-    let toastArr = [];
+    const actionSheetConstructor = Vue.extend(actionSheetComponent);
+    let actionSheetArr = [];
 
     let getInstance = () => {
-      if (toastArr.length) {
-        let instance = toastArr[0];
-        toastArr.splice(0, 1);
+      if (actionSheetArr.length) {
+        let instance = actionSheetArr[0];
+        actionSheetArr.splice(0, 1);
         return instance;
       }
-      return new ToastConstructor({
+      return new actionSheetConstructor({
         el: document.createElement('div')
       });
     };
 
     let addInstance = instance => {
       if (instance) {
-        toastArr.push(instance);
+        actionSheetArr.push(instance);
       }
     }
 
@@ -30,7 +30,7 @@ const plugin = {
       }
     }
 
-    ToastConstructor.prototype.hide = function(callback) {
+    actionSheetConstructor.prototype.hide = function(callback) {
       this.shown = false;
       removeDom(this.$el)
         // this.$el.addEventListener('transitionend', removeDom);
@@ -52,56 +52,29 @@ const plugin = {
     }
 
     const show = (options) => {
-      let instance = getInstance();
-      instance.closed = false;
-      clearTimeout(instance.timer);
-      instance.timer = null;
+      options = setOptions(options);
+      options = Object.assign({ type: 'info' }, options);
 
-      instance.message = options.message || '';
-      instance.duration = (typeof options.duration === 'number' && options.duration > 0) ? options.duration : 3000;
-      instance.type = options.type || 'info';
+      let instance = getInstance();
+      instance.shown = true;
+      instance.title = options.title || '标题';
+      instance.cancelText = options.cancelText||'取消';
+      instance.actions= options.actions ||null;
       instance.position = options.position || 'middle';
-      instance.callback = options.callback || null;
+
 
       document.body.appendChild(instance.$el);
 
-      Vue.nextTick(function() {
-        instance.shown = true;
-
-        instance.timer = setTimeout(function() {
-          if (instance.closed) {
-            return;
-          }
-          instance.hide(options.callback);
-        }, instance.duration);
-      });
+  
 
       return instance;
     }
 
-    const info = function(options) {
-      options = setOptions(options);
-      options = Object.assign({ type: 'info' }, options);
-      return show(options);
-    }
-    const success = function(options) {
-      options = setOptions(options);
-      options = Object.assign({ type: 'success', position: 'top' }, options);
-      return show(options);
-    }
-    const error = function(options) {
-      options = setOptions(options);
-      options = Object.assign({ type: 'error' }, options);
-      return show(options);
-    }
-
-    const Toast = {
-      info: info,
-      success: success,
-      error: error
+    const actionSheet = {
+      show: show,
     };
 
-    Vue.toast = Vue.prototype.$toast = Toast;
+    Vue.actionSheet = Vue.prototype.$actionSheet = actionSheet;
 
 
   }

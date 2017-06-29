@@ -1,9 +1,9 @@
 {
-  "name": "mz-vue-toast",
+  "name": "mz-vue-actionSheet",
   "version": "1.0.0",
   "author": "maqian",
   "license": "MIT",
-  "description": "A toast plugin for vue/vue2",
+  "description": "A actionSheet plugin for vue/vue2",
   
    "scripts": {
      "dev": "webpack-dev-server --config ./webpack.example.config.js --content-base example/ --inline --hot",
