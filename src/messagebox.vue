@@ -1,7 +1,7 @@
 <template>
-  <div v-show="shown" class="messagebox-mask">
-    <transition name="toast">
-      <div v-show="shown" class="toast" :class="messageClass">
+ <transition name="fade">
+  <div v-show="shown" class="messagebox-mask" @click="closeOnClickModal">
+      <div v-show="shown" class="toast" :class="messageClass" >
        <div class="title " v-show="showTitle" v-html="title"></div>
        <div class="delete" v-show="showDelete" @click="handleClose"></div>
       <div class="message" v-html="message">
@@ -11,9 +11,8 @@
          <div class="sure col-5"   v-show="showConfirmButton" @click="handleConfirm" >{{confirmButtonText}}</div>
       </div> 
       </div>
-       
-    </transition>
   </div>
+  </transition>
 </template>
 <style scoped lang="scss">
 .messagebox-mask {
@@ -73,6 +72,23 @@ margin:14px 0px 20px;
    border-top:1px solid #eee;
  
 }
+.fade-enter{
+    background-color:rgba(0,0,0,0) ;
+}
+.fade-enter-active{
+     transition: all .3s ;
+}
+
+.fade-leave-to{
+    background-color:rgba(0,0,0,0) ;
+}
+.fade-leave{
+    background-color:rgba(0,0,0,.7) ;
+}
+.fade-leave-active{   
+     transition: all .3s ;
+}
+
 </style>
 <script>
 export default {
@@ -97,6 +113,14 @@ export default {
        },
         show:function(){
          this.shown=true;
+      },
+      closeOnClickModal: function(e) {
+
+        var target=e.target.className;
+         if(target=='messagebox-mask'){
+          this.shown=false;
+         }
+
       },
         handleCancel: function (event) { 
           console.log('confirmEvent');
