@@ -1,6 +1,7 @@
 <template>
  <transition name="fade">
   <div v-show="shown" class="messagebox-mask" @click="closeOnClickModal">
+  <transition >
       <div v-show="shown" class="toast" :class="messageClass" >
        <div class="title " v-show="showTitle" v-html="title"></div>
        <div class="delete" v-show="showDelete" @click="handleClose"></div>
@@ -11,6 +12,7 @@
          <div class="sure col-5"   v-show="showConfirmButton" @click="handleConfirm" >{{confirmButtonText}}</div>
       </div> 
       </div>
+      </transition>
   </div>
   </transition>
 </template>
@@ -72,6 +74,28 @@ margin:14px 0px 20px;
    border-top:1px solid #eee;
  
 }
+.v-enter{
+     opacity: 0;
+     transform: translate3d(-50%, -40%, 0);
+}
+.v-enter-active{
+     transition: all .3s ;
+}
+
+.v-leave-to{
+    opacity: 0;
+     transform: translate3d(-50%, -50%, 0);
+}
+.v-leave{
+   transform: translate3d(-50%, -40%, 0);
+}
+.v-leave-active{   
+     transition: all .3s ;
+}
+
+
+
+
 .fade-enter{
     background-color:rgba(0,0,0,0) ;
 }
