@@ -46,15 +46,15 @@
   overflow: hidden;
 }
 .action div{
-  color:#D0011B;
+  color:#009ae8;
   font-size:18px;
   border-top:1px solid #DDD;
   background-color:#fff;
   padding:17px 0px;
 }
 .cancel{
-   color:#4A4A4A;
-  font-size:18px;
+  color:#c1abab;
+  font-size:16px;
   border-top:1px solid #DDD;
   background-color:#fff;
   padding:17px 0px;
@@ -95,7 +95,7 @@
 
 .toast-message {
   background-color:#fff;
-  font-size: 18px;
+  font-size: 14px;
   text-align: middle;
   color:#9B9B9B;
   padding:7px 0px 
