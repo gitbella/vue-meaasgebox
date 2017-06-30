@@ -15,31 +15,34 @@ import Vue from 'vue';
 import actionSheet from 'mz-vue-actionSheet';
 Vue.use(actionSheet);
 
-```
-Basically you can pass a string to `actionSheet`:
 ```Javascript
-Vue.actionSheet.info('test');
-Vue.actionSheet.success('success');
-Vue.actionSheet.error('error');
-```
-Or invoke `actionSheet` with an object as its configuration:
-```Javascript
-Vue.actionSheet.info({
-  message: 'test',
-  duration: 3000,
-  className: 'my-class'
-});
+Vue.actionSheet.show({
+    title:'信息还未提交,真的要离开',
+    cancelText:'再想想',
+    actions:[
+    {
+      text:'操作1',
+      action:function(){
+        alert('操作1');
+      },
+    },
+    {
+      text:'操作2',
+      action:function(){
+        alert('操作2');
+      }
+    }
+    ]
+    });
 
 ```
 
 # API
-| Option    | Description                                    | Value                   | Default  |
-|-----------|------------------------------------------------|-------------------------|----------|
-| message   | content of the actionSheet                           |                         |          |
-| duration  | time before the actionSheet vanishes, in millisecond |                         | 3000     |
-| className | custom class name of the actionSheet                 |                         |          |
-| position  | position of the actionSheet                          |    'top' 'middle'       |          |
-| callback  |  callback after actionSheet hide                     |                         |          |
+| Option      | Description                                    | Value                   | Default  |
+|-----------  |------------------------------------------------|-------------------------|----------|
+| title       | 标题                                            |                         |          |
+| cancelText  | 取消按钮的文字                                    |  “取消”                  |           |
+| actions     | 操作数组,对象{text:'',actionLfunction(){}}         |      必须传                   |          |
 
 
 # License
