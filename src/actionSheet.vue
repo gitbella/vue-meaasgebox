@@ -84,13 +84,13 @@
 
 
 .v-leave-to{
-    transform: translate3d(-50%, 200px, 0);
+    transform: translate3d(-50%, 250px, 0);
 }
 .v-leave{
     transform: translate3d(-50%, 10px, 0);
 }
 .v-leave-active{   
-     transition: all .3s ;
+     transition: all .3s ease;
 }
 
 
@@ -101,7 +101,7 @@
     background-color:rgba(0,0,0,.7) ;
 }
 .fade-leave-active{   
-     transition: all .3s ;
+     transition: all .3s ease;
 }
 
 
