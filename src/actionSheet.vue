@@ -1,6 +1,6 @@
 <template>
  <transition name="fade">
-  <div v-show="shown" class="actionSheet-mask" @click="shown=!shown">  
+  <div v-show="shown" class="actionSheet-mask" @click="closeOnClickModal">  
    <transition>
       <div v-show="shown"   class="toast" :class="toastClass">
    
@@ -144,7 +144,15 @@ export default {
         action();
         this.shown=false;
 
-      }
+      },
+        closeOnClickModal: function(e) {
+
+        var target=e.target.className;
+         if(target=='actionSheet-mask'){
+          this.shown=false;
+         }
+
+      },
     },
     props: {
   
