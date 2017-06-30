@@ -1,18 +1,19 @@
 <template>
-  <div v-show="shown" class="actionSheet-mask">
-    <transition>
-      <div v-show="shown && position=='middle'" class="toast" :class="toastClass">
+ <transition name="fade">
+  <div v-show="shown" class="actionSheet-mask" @click="shown=!shown">  
+   <transition>
+      <div v-show="shown"   class="toast" :class="toastClass">
    
-        <div class="toast-message " v-html="title"></div>
+        <div class="title" v-html="title"></div>
         <div class="action"  v-for="(item, index) in actions">
-          <div class="" @click="handleAction(index)">{{item.text}}</div>
+          <div class="" @click.stop="handleAction(index)">{{item.text}}</div>
           <!-- <div class="">{{item.action}}</div> -->
         </div>
-        <div class="cancel" @click="handleCancel" v-html="cancelText"></div>
-
+        <div class="cancel" @click.stop="shown=!shown" v-html="cancelText" v-if='cancelText!=""'></div>
       </div>
-    </transition>
+      </transition>
   </div>
+ </transition >
 </template>
 <style scoped lang="scss">
 * {
@@ -24,9 +25,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #000;
+  background-color:rgba(0,0,0,.7) ;
   z-index: 1000;
-  opacity:0.7;
+
 
 }
 
@@ -35,6 +36,7 @@
   left: 50%;
   bottom: 10px;
   width:95%;
+  opacity:1;
   transform: translate3d(-50%,0, 0);
   border-radius: 4px;
   background: #EFEDED;
@@ -66,34 +68,44 @@
   transform: translate3d(-50%, 20px, 0);
 }
 
-.toast-top-enter {
-  opacity: 0;
-  transform: translate3d(-50%, 0px, 0);
-}
-
-.toast-top-enter-active {
-  transition: all .5s ;
-}
-
 .v-enter {
-  opacity: 0;
-  transform: translate3d(-50%, 20px, 0);
+  transform: translate3d(-50%, 200px, 0);
 }
 
 .v-enter-active {
   transition: all .3s ;
 }
-
-.v-leave {
-  opacity: 1;
+.fade-enter{
+    background-color:rgba(0,0,0,0) ;
+}
+.fade-enter-active{
+     transition: all .3s ;
 }
 
-.v-leave-active {
-  transition: all .3s ;
-  opacity: 0;
+
+.v-leave-to{
+    transform: translate3d(-50%, 200px, 0);
+}
+.v-leave{
+    transform: translate3d(-50%, 10px, 0);
+}
+.v-leave-active{   
+     transition: all .3s ;
 }
 
-.toast-message {
+
+.fade-leave-to{
+    background-color:rgba(0,0,0,0) ;
+}
+.fade-leave{
+    background-color:rgba(0,0,0,.7) ;
+}
+.fade-leave-active{   
+     transition: all .3s ;
+}
+
+
+.title{
   background-color:#fff;
   font-size: 14px;
   text-align: middle;
@@ -124,10 +136,10 @@ export default {
     },
     methods:{
 
-      handleCancel:function(){
-       this.shown = false;      
-        },
-      handleAction:function(index){
+      handleCancel: function() {
+        this.shown = false;      
+      },
+      handleAction: function(index) {
         var action=this.actions[index].action;
         action();
         this.shown=false;

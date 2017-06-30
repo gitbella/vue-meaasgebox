@@ -58,7 +58,7 @@ const plugin = {
       let instance = getInstance();
       instance.shown = true;
       instance.title = options.title || '标题';
-      instance.cancelText = options.cancelText||'取消';
+      instance.cancelText = options.cancelText||'';
       instance.actions= options.actions ||null;
       instance.position = options.position || 'middle';
 

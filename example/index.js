@@ -24,9 +24,6 @@ import Toast from "../src/index.js";
       }
     }
     ]
-
-
-
     });
   });
 
